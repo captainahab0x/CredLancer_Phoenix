@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Staking from "./pages/Staking";
 import Snuck from "./pages/Snuck";
 import Tokenomics from "./pages/Tokenomics";
+import InjectWallet from "./components/Wallet/InjectWallet";
 import "./style.css";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/tokenomics" element={<Tokenomics />}></Route>
         </Routes>
       </BrowserRouter>
+      <InjectWallet/>
     </>
   );
 }
