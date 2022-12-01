@@ -10,10 +10,15 @@ import React from "react";
 import "./Login.css";
 // import ConnectWallet from "../Wallet/WalletConnect";
 import WalletMetaMask from "../Wallet";
+
+import { useConnectors } from "@starknet-react/core";
+
 import InjectWallet from "../Wallet/InjectWallet";
+import ConnectStarknetWallet from "../Wallet/ConnectStarknetWallet";
 
 function LoginOptions() {
-
+  const { connect, connectors } = useConnectors();
+  const { available, refresh } = useConnectors();
   const [loading, setLoading] = useState(true);
   const [connected, setConnected] = useState(false);
   const [message, setMessage] = useState("JOIN");
@@ -100,10 +105,10 @@ function LoginOptions() {
     setLoading(false);
   }
 
-
-
-
-  
+  // useEffect(() => {
+  //   const interval = setInterval(refresh, 5000);
+  //   return () => clearInterval(interval);
+  // }, [refresh]);
 
   return (
     // <div>
@@ -111,19 +116,46 @@ function LoginOptions() {
     //     <Button className='login-btn'>MetaMask</Button>
     //     <Button className='login-btn'>WalletConnect</Button>
     // </div>
+    // <InjectWallet/>
+
+    // <ConnectStarknetWallet />
     <div className="d-grid gap-2 login-btn-container">
-      <Button className='login-btn' variant="primary" size="lg">
+      <Button
+        className="login-btn my-btn"
+        variant="primary"
+        size="lg"
+        onClick={() => connect(connectors[0])}
+      >
+        Braavos
+      </Button>
+      <Button
+        className="login-btn my-btn"
+        variant="primary"
+        size="lg"
+        onClick={() => connect(connectors[1])}
+      >
         ArgentX
       </Button>
-      
-      <Button className='login-btn login-btn-grey' variant="primary" size="lg" onClick={handleConnectWalletMetamask} >
+
+      <Button
+        className="login-btn login-btn-grey"
+        variant="primary"
+        size="lg"
+        onClick={() => handleConnectWalletMetamask()}
+      >
         MetaMask
       </Button>
-      <Button className='login-btn login-btn-grey' variant= "primary" size="lg" disabled>
+
+      <Button
+        className="login-btn login-btn-grey"
+        variant="primary"
+        size="lg"
+        disabled
+      >
         Discord
       </Button>
     </div>
-  );
+  )
 }
 
 export default LoginOptions;
