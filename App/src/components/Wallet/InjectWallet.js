@@ -1,6 +1,5 @@
 import React from 'react'
 import { StarknetConfig, InjectedConnector } from '@starknet-react/core'
-import ConnectStarknetWallet from './ConnectStarknetWallet'
 import LoginOptions from '../login/LoginOptions'
 
 function InjectWallet({ Component, pageProps }) {

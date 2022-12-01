@@ -14,7 +14,6 @@ import WalletMetaMask from "../Wallet";
 import { useConnectors } from "@starknet-react/core";
 
 import InjectWallet from "../Wallet/InjectWallet";
-import ConnectStarknetWallet from "../Wallet/ConnectStarknetWallet";
 
 function LoginOptions() {
   const { connect, connectors } = useConnectors();

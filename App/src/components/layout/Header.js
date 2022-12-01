@@ -13,7 +13,6 @@ import LoginOptions from "../login/LoginOptions";
 import { LogDescription } from "ethers/lib/utils";
 import { useLinkClickHandler } from "react-router-dom";
 import { useState } from "react";
-import ConnectStarknetWallet from "../Wallet/ConnectStarknetWallet";
 import InjectWallet from "../Wallet/InjectWallet";
 
 const Header = () => {
