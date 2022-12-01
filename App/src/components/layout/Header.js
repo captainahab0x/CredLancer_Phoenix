@@ -13,6 +13,8 @@ import LoginOptions from "../login/LoginOptions";
 import { LogDescription } from "ethers/lib/utils";
 import { useLinkClickHandler } from "react-router-dom";
 import { useState } from "react";
+import ConnectStarknetWallet from "../Wallet/ConnectStarknetWallet";
+import InjectWallet from "../Wallet/InjectWallet";
 
 const Header = () => {
   const [joinButtonPopup, setJoinButtonPopup] = useState(false);
@@ -359,13 +361,17 @@ const Header = () => {
                   <NavLink to="/freelancer">FREELANCER</NavLink>
                 </Col>
                 <Col>
+                    {/* <LoginOptions /> */}
+                    {/* <ConnectStarknetWallet/> */}
                   {/* <WalletMetaMask/> */}
                   <Join p1={joinButtonPopup} p2={setJoinButtonPopup}/>
                   <LoginContainer p1={joinButtonPopup} p2={setJoinButtonPopup} trigger={joinButtonPopup}>
                     <h3>WELCOME TO CREDLANCER</h3>
                     <p>Sign-in to get started</p>
-                    <LoginOptions />
+                    {/* <LoginOptions/> */}
+                    <InjectWallet/>
                   </LoginContainer>
+                  
                 </Col>
               </Row>
             </div>

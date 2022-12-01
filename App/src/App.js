@@ -19,7 +19,6 @@ function App() {
           <Route path="/tokenomics" element={<Tokenomics />}></Route>
         </Routes>
       </BrowserRouter>
-      <InjectWallet/>
     </>
   );
 }
