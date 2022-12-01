@@ -2654,7 +2654,7 @@
     "@stablelib/random" "^1.0.2"
     "@stablelib/wipe" "^1.0.1"
 
-"@starknet-react/core@*":
+"@starknet-react/core@^0.14.7":
   version "0.14.7"
   resolved "https://registry.npmjs.org/@starknet-react/core/-/core-0.14.7.tgz"
   integrity sha512-/b83mKInfRkk/LkKMBv5VslwtZupb3ZsJ1T3Ysg3PuOOLWuUOsecSv6yu8aE96bNpNbq+oMrapkeB/jMFW2Stg==

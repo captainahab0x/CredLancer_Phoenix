@@ -1,0 +1,13 @@
+.rectangle-button1 {
+  cursor: progress;
+  border: 0;
+  padding: 0;
+  background-color: var(--color-violet);
+  position: absolute;
+  top: 721px;
+  left: 804px;
+  border-radius: var(--br-sm);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 255px;
+  height: 103px;
+}
