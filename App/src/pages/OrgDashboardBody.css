@@ -403,7 +403,6 @@ color: #E8EDF6;
 
 .badge-description {
   width: 100%;
-  height: 150px;
   padding: 12px 20px;
   box-sizing: border-box;
   border: 2px solid #ccc;
@@ -424,15 +423,9 @@ color: #E8EDF6;
 }
 
 .badge-image-wrapper {
-  height: 64px;
-  width: 64px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  border-radius: 12px;
-  border: 1px solid #ffdbdb;
+  font-family: 'Roboto';
 }
+
 
 .edit-icon-wrapper {
   position: absolute;
