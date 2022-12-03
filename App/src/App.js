@@ -7,7 +7,7 @@ import Snuck from "./pages/Snuck";
 import Tokenomics from "./pages/Tokenomics";
 import InjectWallet from "./components/Wallet/InjectWallet";
 import "./style.css";
-import ORGDASHBOARD from "./pages/ORGDASHBOARD";
+import OrgDashboard from "./pages/ORGDASHBOARD";
 import React from "react";
 
 
@@ -17,10 +17,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/snuck" element={<Snuck />}></Route>
-          <Route path="/staking" element={<Staking />}></Route>
-          <Route path="/tokenomics" element={<Tokenomics />}></Route>
-          <Route path="/minting" element={<ORGDASHBOARD/>}></Route>
+          <Route path="/minting" element={<OrgDashboard/>}></Route>
         </Routes>
       </BrowserRouter>
     </>

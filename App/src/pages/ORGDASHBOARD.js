@@ -3,7 +3,7 @@ import { FunctionComponent, useCallback } from "react";
 // import RectangleComponent from "../components/RectangleComponent.js";
 import "./ORGDASHBOARD.css";
 
-const ORGDASHBOARD: FunctionComponent = () => {
+const OrgDashboard = () => {
   const onADDText2Click = useCallback(() => {
     // Please sync "ORG - ADD MEMBER/Assign to ORG" to the project
   }, []);
@@ -228,4 +228,4 @@ const ORGDASHBOARD: FunctionComponent = () => {
   );
 };
 
-export default ORGDASHBOARD;
+export default OrgDashboard;
