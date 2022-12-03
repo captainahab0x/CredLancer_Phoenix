@@ -10,6 +10,11 @@
   text-align: center;
 }
 
+.org-navbar {
+  justify-content: space-between;
+  width: 75vw;
+}
+
 .cover {
   position: absolute;
   width: 100%;
