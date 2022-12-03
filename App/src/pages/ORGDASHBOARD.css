@@ -964,3 +964,9 @@
   color: var(--color-gray-200);
   font-family: var(--font-roboto);
 }
+
+.org-navbar {
+  width: 80vw;
+  justify-content: space-between;
+  margin: auto;
+}

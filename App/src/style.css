@@ -10,7 +10,7 @@
 
 .cover {
     width: 100% !important;
-    height: 900px !important;
+    z-index: -1;
 }
 
 .logo img {
@@ -26,6 +26,16 @@
     color: #29116c;
     border-radius: 50px;
     border: none;
+}
+
+.joined-btn {
+    font-family: 'Inter';
+    background-color: #123259;
+}
+
+.loggedInViewContainer {
+    display: flex;
+    align-items: center;
 }
 
 .h-center {

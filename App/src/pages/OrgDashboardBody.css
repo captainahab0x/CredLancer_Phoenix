@@ -1,0 +1,375 @@
+
+@font-face {
+  font-family: 'Aclonica';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/aclonica/v18/K2FyfZJVlfNNSEBXGY7UAo-KBSLy.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYAZJhiJ-Ek-_EeAmM.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYAZthiJ-Ek-_EeAmM.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYAZNhiJ-Ek-_EeAmM.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYAZxhiJ-Ek-_EeAmM.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYAZBhiJ-Ek-_EeAmM.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYAZFhiJ-Ek-_EeAmM.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYAZ9hiJ-Ek-_EeA.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+.main-body {
+  max-width: 72vw;
+  margin: auto;
+}
+.cover {
+  position: absolute;
+  width: 100%;
+  height: 1700px;
+  left: 1px;
+  top: 0px;
+  background: linear-gradient( 100.72deg, #321875 -9.04%, #44209d 0.43%, #9c1ef2 104.22% );
+}
+
+.console-view {
+  background-color: #E8EDF6;
+  margin-top: 80px;
+}
+
+.console-header {
+  padding: 0px 32px;
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.org-bio {
+  font-family: Aclonica;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #0A0017;
+  display: flex;
+
+}
+
+.org-edit {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0em;
+  text-align: right;
+  color: #0A0017;
+  display: flex;
+
+}
+
+.console-body {
+  background-color: #0A0017;
+  margin: 0 4px;
+  padding: 48px 0px;
+  padding-bottom: 164px;
+}
+
+.org-view-wrapper {
+  display: flex;
+  padding: 0px 10%;
+  margin-bottom: 100px;
+}
+
+.org-view {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-direction: column;
+  max-width: 60%;
+}
+
+.org-name {
+  flex: 1;
+}
+
+.org-name-content {
+  font-family: 'Aclonica';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 100px;
+  text-align: center;
+  color: #E8EDF6;
+}
+
+.org-view-details {
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.org-name-wrapper {
+  margin-bottom: 4px;
+}
+.org-logo {
+  margin-right: 24px;
+} 
+
+.org-details {
+  flex: 1;
+  margin-right: 48px;
+}
+
+.join-org-btn {
+
+}
+
+.connect-discord {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+  color: #E8EDF6;
+  background: transparent;
+  border-radius: 5px;
+  width: 200px;
+  height: 36px;
+  border: 1px solid #CE4CDF;
+
+}
+
+.connect-discord span {
+  font-family: 'Roboto';
+  color: #E8EDF6;
+}
+
+.badge-your-member {
+    font-style: normal;
+    font-size: 14px;
+    text-align: center;
+    color: #E8EDF6;
+    background: #CE4CDF;
+    border-radius: 5px;
+    padding: 0px 64px;
+    height: 36px;
+}
+
+.org-type {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;  
+  color: #E8EDF6;
+  margin-bottom: 8px;
+}
+
+.org-desc-text {
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+color: #E8EDF6;
+}
+
+.org-icon {
+
+}
+
+.org-badge {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.badge-your-member-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.org-badge-img-wrapper {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 48px;
+}
+
+.org-banner {
+  background: #71DCCC;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  margin: 0px 10%;
+  display: flex;
+  padding: 24px 8px;
+}
+
+.board-wrapper {
+  width: 200px;
+}
+
+.twitter-board {
+
+}
+
+.board-title {
+  font-family: 'Aclonica';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  text-align: center;  
+  color: #29116C;
+  margin-bottom: 8px;
+}
+
+.board-desc {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+  color: #29116C;
+}
+
+.org-bucket-details {
+  margin: 0px 10%;
+  position: relative;
+  bottom: 64px;
+
+}
+
+.org-member-wrapper {
+  background-color: #E8EDF6;
+  margin-bottom: 42px;
+}
+
+.org-member-header {
+  padding: 0px 32px;
+  height: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #321975;
+}
+
+.org-member-body {
+  display: flex;
+  justify-content: space-around;
+  padding: 48px 64px;
+}
+
+.org-member-body .member-profile {
+  margin-bottom: 16px;
+}
+
+.org-member-body .member-name {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  color: #321975;
+  text-shadow: -3px 4px #bdbdbd;
+}
+
+.role-profile {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #9C1EF3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 24px;
+}
+/* <div className='org-bucket-details'>
+<div className='org-member-wrapper'>
+  <div className='org-member-header'></div>
+  <div className='org-member-body'></div>
+</div>
+</div> */
+/* 
+<div className='org-banner'>
+<div className='twitter-board'>
+  <div className='board-title'>
+    43.5k
+  </div>
+  <div className='board-desc'>
+    Twitter followers
+  </div> */
+
+/* <div className='org-view-wrapper'>
+<div className='org-view'>
+  <div className='org-name'>
+    <div className='org-name-content'>
+      BitDAO
+    </div>
+  </div>
+  <div className='org-view-details'>
+    <div className='org-logo'>
+
+    </div>
+    <div className='org-details'>
+      
+    </div>
+  </div>
+  <div className='join-org-btn'>
+
+  </div>
+</div>
+<div className='org-icon'></div>
+</div> */
