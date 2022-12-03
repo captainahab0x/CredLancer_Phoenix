@@ -1,4 +1,4 @@
-# CredLancer_Starknet
+# CredLancer_Phoenix
 
 ## Step: 1 `cd CredLancer`
 ## Step: 2 `npm install`
