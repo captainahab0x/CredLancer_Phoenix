@@ -1,12 +1,9 @@
 import React from "react";
-
-// import WalletMetaMask from "../Wallet/WalletMetaMask";
 import WalletMetaMask from "../Wallet";
 import "../login/Login.css";
 
 function AreYouReadyContainer(props) {
-  // const [joinButtonPopup, setJoinButtonPopup] = useState(false);
-  const {p1, p2, p3, p4, p5, p6} = props
+  const {p4, p6} = props
 
 
   return props.trigger ? (

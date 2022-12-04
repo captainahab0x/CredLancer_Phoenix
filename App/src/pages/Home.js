@@ -6,8 +6,6 @@ import { Col, Container, Row } from "react-bootstrap";
 import ImgSliderBox from "../components/Home/ImgSliderBox";
 import ImgCard from "../components/Common/ImgCard";
 import LancerInfoCard from "../components/Common/LancerInfoCard";
-import LatestQuestsSlideBox from "../components/Home/LatestQuestsSlideBox";
-import LogoSlideBox from "../components/Home/LogoSlideBox";
 
 const Home = () => {
   return (
@@ -23,31 +21,29 @@ const Home = () => {
                     Completed Quests
                   </h1>
                 </Row>
-
                 <Row className="quests-slide-bar">
                   <ImgSliderBox />
                 </Row>
-
                 <Row className="mt-5">
                   <Col md={6}>
                     <div className="single-img-card">
                       <ImgCard img="./assets/images/1.png" />
                     </div>
                   </Col>
-                  <Col md={6}>
-                    <h1 className="white">
+                  <Col md={5}>
+                    <h3 className="white soul-bound-token-heading">
                       {" "}
                       What is a Soul Bound Verification?
-                    </h1>
+                    </h3>
                     <div className="pink-text-card mt-5">
-                      <h1 className="font-farmily-normal white">
+                      <p className="font-farmily-normal white">
                         Soul Bound Tokens are <br />
                         non-tranferable digital proof of skills, contributions,
                         or quest completions.
                         <br />
                         <br />
                         They cannot be tranfered.{" "}
-                      </h1>
+                      </p>
                     </div>
                   </Col>
                 </Row>
@@ -76,22 +72,6 @@ const Home = () => {
                   title="Super ideas"
                   desc="Multi-sig Safe Vault with project budgets Programmed payouts Payment speed history visible"
                 />
-              </Row>
-            </Container>
-          </div>
-          <div className="second-section">
-            <Container>
-              <Row>
-                <Row>
-                  <h7 className="font-farmily-normal white">OUR PORTFOLIO</h7>
-                  <h1 className="font-farmily-normal white mt-3">
-                    Take A Look At The Latest Quests
-                  </h1>
-                  <LatestQuestsSlideBox />
-                </Row>
-              </Row>
-              <Row className="logo-info-row">
-                <LogoSlideBox />
               </Row>
             </Container>
           </div>

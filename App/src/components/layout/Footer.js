@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="container footer-container ">
         <div className="footer">
           <Row>
-            <Col md={4}>
+            <Col md={3}>
               <p className="footer-btn">
                 Lorem ipsum dolor sit amet, consectetur adipiscing sed do
                 eiusmod tempor incididunt labore et dolore magna aliqua. Ut enim
@@ -16,59 +16,62 @@ const Footer = () => {
                 ut aliquip ea commodo consequat.
               </p>
             </Col>
+            <Col md={1} />
             <Col md={2}>
-              <div className="d-block">
-                <div>
+              <div className="d-block footer-btn-wrapper">
+                <div className='footer-btn-item-wrapper'>
                   <Link className="footer-btn active-footer-btn">Home</Link>
                 </div>
-                <div>
+                <div className='footer-btn-item-wrapper'>
                   <Link className="footer-btn">About Us</Link>
                 </div>
-                <div>
+                <div className='footer-btn-item-wrapper'>
                   <Link className="footer-btn">Services</Link>
                 </div>
-                <div>
+                <div className='footer-btn-item-wrapper'>
                   <Link className="footer-btn">Team</Link>
                 </div>
-                <div>
+                <div className='footer-btn-item-wrapper'>
                   <Link className="footer-btn">Blog</Link>
                 </div>
               </div>
             </Col>
-            <Col md={3}>
+            <Col md={1} />
+            <Col md={2}>
               <div className="d-block">
-                <div>
+                <div className='footer-btn-item-wrapper'>
                   <Link className="footer-btn">About Company</Link>
                 </div>
-                <div>
+                <div className='footer-btn-item-wrapper'>
                   <Link className="footer-btn">Our Testimonials</Link>
                 </div>
-                <div>
+                <div className='footer-btn-item-wrapper'>
                   <Link className="footer-btn">Latest News</Link>
                 </div>
-                <div>
+                <div className='footer-btn-item-wrapper'>
                   <Link className="footer-btn">Our misson</Link>
                 </div>
-                <div>
+                <div className='footer-btn-item-wrapper'>
                   <Link className="footer-btn">Get a free Quot</Link>
                 </div>
               </div>
             </Col>
-            <Col md={3}>
+            <Col md={1} />
+            <Col md={2}>
               <div className="d-block">
-                <div>
+                <div className='footer-btn-item-wrapper'>
                   <Link className="footer-btn">App Development</Link>
                 </div>
-                <div>
+                <div className='footer-btn-item-wrapper'>
                   <Link className="footer-btn">Web Development</Link>
                 </div>
-                <div>
+                <div className='footer-btn-item-wrapper'>
                   <Link className="footer-btn">Graphic Design</Link>
                 </div>
-                <div>
+                <div className='footer-btn-item-wrapper'>
                   <Link className="footer-btn">Web Solution</Link>
                 </div>
-                <div>
+                <div className='footer-btn-item-wrapper'>
                   <Link className="footer-btn">App Design</Link>
                 </div>
               </div>

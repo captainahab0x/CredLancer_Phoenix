@@ -349,14 +349,13 @@ color: #E8EDF6;
   display: flex;
   justify-content: space-between;
   color: #0A0017;
-  padding: 12px 24px;
+  padding: 8px 24px;
 }
 
 .modal-close-btn {
   height: 32px;
   width: 32px;
   box-sizing: border-box;
-  border: 1px solid #8cabc7;
   border-radius: 4px;
 }
 .modal-close-btn:hover {
@@ -368,6 +367,7 @@ color: #E8EDF6;
 
 .modal-header-font {
   font-family: 'Inter';
+  color: #E8EDF6;
 }
 
 .modal-body {
@@ -379,6 +379,7 @@ color: #E8EDF6;
   display: flex;
   justify-content: flex-start;
   padding: 12px 24px;
+  background-color: #1B1E24;
 }
 
 .modal-footer-submit-btn {
@@ -399,6 +400,8 @@ color: #E8EDF6;
 .badge-dropdown {
   height: 32px;
   padding: 0px 20px;
+  color: #E8EDF6;
+  background-color: #1c1e23;
 }
 
 .badge-description {
@@ -410,11 +413,18 @@ color: #E8EDF6;
   background-color: #f8f8f8;
   font-size: 16px;
   resize: none;
+  background-color: #1B1E24;
+  color: #E8EDF6;
 }
 
 .react-datepicker__input-container input {
+  font-family: 'Roboto' !important;
   height: 32px;
   padding-left: 8px;
+  background-color: #1B1E24;
+  color: #f8f8f8;
+  border: 1px solid #f8f8f8;
+
 }
 
 .add-badge-container {
@@ -424,6 +434,7 @@ color: #E8EDF6;
 
 .badge-image-wrapper {
   font-family: 'Roboto';
+  color: #E8EDF6;
 }
 
 
@@ -446,6 +457,6 @@ color: #E8EDF6;
   padding: 0px 8px;
 }
 
-.react-datepicker__input-container input {
-  font-family: 'Roboto' !important;
+.modal-body {
+  background-color: #1B1E24;
 }

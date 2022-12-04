@@ -23,7 +23,9 @@ const NFT_STORAGE_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6
 
 Modal.setAppElement('#modal-element');
 
-async function storeInIPFS ({ name, description, image }) {
+async function storeInIPFSUsingNFTStorage ({ name, description, image }) {
+  console.log('inside storeInIPFS');
+  console.log(name, description, image);
   const client = new NFTStorage({ token: NFT_STORAGE_TOKEN });
 
   // fetch(image).then(response => {
@@ -40,9 +42,12 @@ async function storeInIPFS ({ name, description, image }) {
   // });
 
   // val = await uploadtoNFTstorage(NFT_Mint_JSON);
-  const someData = new Blob(["hello world"]);
-  const metadata = await client.storeBlob(someData);
-  console.log(metadata);
+
+  const metadata = await client.store({
+    name,
+    description,
+    image
+  });
 }
 
 export default function OrgDashboardBody () {
@@ -64,6 +69,7 @@ export default function OrgDashboardBody () {
   ];
   const [selectedOptionIndex, setSelectedOptionIndex] = React.useState(0);
   const [lancerId, setLancerId] = React.useState('0x2C1b291B3946e06ED41FB543B18a21558eBa3d62');
+  const [imgObj, setImgObj] = React.useState();
 
   const handleSubmit = async () => {
     const badgeName = options[selectedOptionIndex].title || '';
@@ -74,13 +80,26 @@ export default function OrgDashboardBody () {
     
     const finalDesc = badgeDescription + 'for: ' + lancerId + 'Issued By: ' + issuedBy + 'on: ' + date;
     
-    fetch(image).then(response => response.blob()).then( (blob) => {
-      storeInIPFS({
-        name: badgeName,
-        description: finalDesc,
-        image: blob
+    // fetch('./IMG_1757_1.png').then(response => response.blob()).then( (blob) => {
+    //   storeInIPFSUsingNFTStorage({
+    //     name: badgeName,
+    //     description: finalDesc,
+    //     image: blob
+    //   });
+    // });
+    const client = new NFTStorage({ token: NFT_STORAGE_TOKEN });
+    console.log(imgObj);
+    try{
+      const metadata = await client.store({
+        name: 'test',
+        description: 'test desc',
+        image: imgObj
       });
-    });
+      console.log(metadata);
+    } catch (err) {
+      console.log(err);
+    }
+
 
   };
   const handleChange = (e) => {
@@ -200,19 +219,19 @@ export default function OrgDashboardBody () {
                 <div className='member-profile'>
                   <img alt='member profile' height='128' width='128' src='./IMG_1756_1.png' />
                 </div>
-                <div className='member-name'>Robby</div>
+                <div className='member-name'>Game 7</div>
               </div>
               <div className='member-profile-wrapper'>
                 <div className='member-profile'>
                   <img height='128' width='128' alt='member profile' src='./IMG_1755_1.png' />
                 </div>
-                <div className='member-name'>Haus</div>
+                <div className='member-name'>SozuHaus</div>
               </div>
               <div className='member-profile-wrapper'>
                 <div className='member-profile'>
                   <img height='128' width='128' alt='member profile' src='./IMG_1818_1.png' />
                 </div>
-                <div className='member-name'>Jane</div>
+                <div className='member-name'>Jane WoW</div>
               </div>
             </div>
           </div>
@@ -269,7 +288,7 @@ export default function OrgDashboardBody () {
           <br />
           <div className='badge-image-wrapper'>
             <h6 style={{ fontFamily: 'Roboto' }} className='modal-header-font'> Upload badge image</h6>
-            <input type="file" id="badgeImage" name="badgeImage" accept="image/png, image/jpeg" />
+            <input onChange={(e) => setImgObj(e.target.files[0])} type="file" id="badgeImage" name="badgeImage" accept="image/png, image/jpeg" />
           </div>
 
           <br />

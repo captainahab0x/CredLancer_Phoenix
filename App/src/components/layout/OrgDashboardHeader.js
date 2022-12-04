@@ -10,11 +10,6 @@ import "./header.css";
 import LoginContainer from "../login/LoginContainer";
 
 import { useState } from "react";
-import InjectWallet from "../Wallet/InjectWallet";
-import AreYouReady from "../OnBoarding/AreYouReady"
-import AreYouReadyContainer from "../OnBoarding/AreYouReadyContainer";
-import JoinAsAContainer from "../OnBoarding/JoinAsAContainer";
-import JoinAsA from "../OnBoarding/JoinAsA";
 
 const OrgDashboardHeader = () => {
   const [joinButtonPopup, setJoinButtonPopup] = useState(false);
