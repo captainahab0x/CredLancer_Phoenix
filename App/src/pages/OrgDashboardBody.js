@@ -76,31 +76,18 @@ export default function OrgDashboardBody () {
     const badgeDescription = options[selectedOptionIndex].description || '';
     const date = startDate;
     const issuedBy = 'BitDAO';
-    const image = document.getElementById('badgeImage').value;
     
     const finalDesc = badgeDescription + 'for: ' + lancerId + 'Issued By: ' + issuedBy + 'on: ' + date;
     
-    // fetch('./IMG_1757_1.png').then(response => response.blob()).then( (blob) => {
-    //   storeInIPFSUsingNFTStorage({
-    //     name: badgeName,
-    //     description: finalDesc,
-    //     image: blob
-    //   });
-    // });
-    const client = new NFTStorage({ token: NFT_STORAGE_TOKEN });
-    console.log(imgObj);
     try{
-      const metadata = await client.store({
-        name: 'test',
-        description: 'test desc',
+      storeInIPFSUsingNFTStorage({
+        name: badgeName,
+        description: finalDesc,
         image: imgObj
       });
-      console.log(metadata);
     } catch (err) {
       console.log(err);
     }
-
-
   };
   const handleChange = (e) => {
     console.log(e.target.value);
