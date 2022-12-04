@@ -4,8 +4,6 @@ import { Button } from "react-bootstrap";
 
 import { useState } from "react";
 
-import Login from "./LoginContainer";
-import LoginOptions from "./LoginOptions";
 
 function LoggedInView(props) {
   const { address } = props;
@@ -20,11 +18,3 @@ function LoggedInView(props) {
   );
 }
 export default LoggedInView;
-
-{
-  /* <Login trigger={joinButtonPopup}>
-        <h3>WELCOME TO CREDLANCER</h3>
-        <p>Sign-in to get started</p>
-        <LoginOptions />
-      </Login> */
-}

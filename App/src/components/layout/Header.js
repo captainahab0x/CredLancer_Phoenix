@@ -8,12 +8,6 @@ import Modal from 'react-modal';
 // import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Join from "../login/Join";
 import "./header.css";
-import WalletMetaMask from "../Wallet";
-import LoginContainer from "../login/LoginContainer";
-import LoginOptions from "../login/LoginOptions";
-import { LogDescription } from "ethers/lib/utils";
-import { useLinkClickHandler } from "react-router-dom";
-import { useState } from "react";
 import JoinContainer from '../OnBoarding/JoinContainer';
 import Role from '../OnBoarding/Role';
 
@@ -34,7 +28,7 @@ Modal.setAppElement('#modal-element');
 
 const Header = (props) => {
   const { address, setAddress } = props;
-  const [joinButtonPopup, setJoinButtonPopup] = useState(false);
+  const [joinButtonPopup, setJoinButtonPopup] = React.useState(false);
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [modalState, setModalState] = React.useState(0);
   function closeModal() {
