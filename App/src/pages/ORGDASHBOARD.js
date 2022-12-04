@@ -5,10 +5,11 @@ import "../assets/css/home.css";
 import Footer from "../components/layout/Footer";
 import './ORGDASHBOARD.css';
 
-const OrgDashboard = () => {
+const OrgDashboard = (props) => {
+  const { address } = props;
   return (
     <>
-      <OrgDashboardHeader />
+      <OrgDashboardHeader address={address} />
       <OrgDashboardBody />
       <div style={{ height: '128px' }}/>
       <Footer />

@@ -8,12 +8,13 @@ import React from "react";
 
 
 function App() {
+  const [address, setAddress] = React.useState('');
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/minting" element={<OrgDashboard/>}></Route>
+          <Route path="/" element={<Home address={address} setAddress={setAddress} />}></Route>
+          <Route path="/minting" element={<OrgDashboard address={address} />}></Route>
         </Routes>
       </BrowserRouter>
     </>
