@@ -295,3 +295,6 @@
     width: 34px;
   }
 }
+.ReactModal__Content--after-open {
+  padding: 0 !important;
+}

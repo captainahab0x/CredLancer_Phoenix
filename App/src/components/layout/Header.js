@@ -3,6 +3,7 @@ import NavLink from "../Common/NavLink";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Modal from 'react-modal';
 // import { Button } from "react-bootstrap";
 // import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Join from "../login/Join";
@@ -13,16 +14,31 @@ import LoginOptions from "../login/LoginOptions";
 import { LogDescription } from "ethers/lib/utils";
 import { useLinkClickHandler } from "react-router-dom";
 import { useState } from "react";
-import InjectWallet from "../Wallet/InjectWallet";
-import AreYouReady from "../OnBoarding/AreYouReady"
-import AreYouReadyContainer from "../OnBoarding/AreYouReadyContainer";
-import JoinAsAContainer from "../OnBoarding/JoinAsAContainer";
-import JoinAsA from "../OnBoarding/JoinAsA";
+import JoinContainer from '../OnBoarding/JoinContainer';
+import Role from '../OnBoarding/Role';
+
+Modal.setAppElement('#modal-element');
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    color: 'black !important'
+  },
+};
+Modal.setAppElement('#modal-element');
+
 
 const Header = () => {
   const [joinButtonPopup, setJoinButtonPopup] = useState(false);
-  const [joinButtonPopup2, setJoinButtonPopup2] = useState(false);
-  const [joinButtonPopup3, setJoinButtonPopup3] = useState(false);
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalState, setModalState] = React.useState(0);
+  function closeModal() {
+    setIsOpen(false);
+  }
   return (
     <>
       <Container fluid className="header-container">
@@ -369,21 +385,7 @@ const Header = () => {
                     {/* <LoginOptions /> */}
                     {/* <ConnectStarknetWallet/> */}
                   {/* <WalletMetaMask/> */}
-                  <Join p1={joinButtonPopup} p2={setJoinButtonPopup}/>
-                  <LoginContainer p1={joinButtonPopup} p2={setJoinButtonPopup} p3={joinButtonPopup2} p4={setJoinButtonPopup2} p5={joinButtonPopup3} p6={setJoinButtonPopup3} trigger={joinButtonPopup}>
-                    <h3>WELCOME TO CREDLANCER</h3>
-                    <p>Sign-in to get started</p>
-                    {/* <LoginOptions/> */}
-                    <InjectWallet/>
-                  </LoginContainer>
-                  <AreYouReadyContainer p1={joinButtonPopup} p2={setJoinButtonPopup} p3={joinButtonPopup2} p4={setJoinButtonPopup2} p5={joinButtonPopup3} p6={setJoinButtonPopup3} trigger={joinButtonPopup2}>
-
-                    <AreYouReady />
-                  </AreYouReadyContainer >
-                  <JoinAsAContainer p1={joinButtonPopup} p2={setJoinButtonPopup} p3={joinButtonPopup2} p4={setJoinButtonPopup2} p5={joinButtonPopup3} p6={setJoinButtonPopup3} trigger={joinButtonPopup3} >
-                    <JoinAsA/>
-                  </JoinAsAContainer>
-                  
+                  <Join setIsOpen={setIsOpen} />
                 </Col>
               </Row>
             </div>
@@ -415,6 +417,20 @@ const Header = () => {
           </div>
         </div>
       </Container>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <div className='modal-header' style={{ display: 'flex', justifyContent: 'flex-end'}}>
+          <button className='modal-close-btn' onClick={closeModal}>X</button>
+        </div>
+        <div className='modal-body'>
+          {modalState === 0 ? <JoinContainer setModalState={setModalState} /> : <Role />}
+          
+        </div>
+      </Modal>
     </>
   );
 };

@@ -11,13 +11,13 @@ import { useAccount } from "@starknet-react/core";
 
 function Join(props) {
   const { account, address, status } = useAccount();
-  const { p1, p2, p3, p4 } = props;
+  const { setIsOpen } = props;
 
 
 
   const [joinButtonPopup, setJoinButtonPopup] = useState(false);
   return (
-    <Button className="join-btn" onClick={() => p2(true)}>
+    <Button className="join-btn" onClick={() => setIsOpen(true)}>
       Join
     </Button>
   );

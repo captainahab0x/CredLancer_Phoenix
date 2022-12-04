@@ -24,8 +24,16 @@
   color: white;
 }
 
+.pink-text-card {
+  font-size: 16px;
+}
+
 .App-link {
   color: #61dafb;
+}
+
+.soul-bound-token-heading {
+  font-size: 32px;
 }
 
 @keyframes App-logo-spin {

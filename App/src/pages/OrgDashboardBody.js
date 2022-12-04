@@ -3,7 +3,7 @@ import './OrgDashboardBody.css';
 import Modal from 'react-modal';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import EditIcon from '../components/editIcon';
+import { NFTStorage  } from 'nft.storage';
 
 const customStyles = {
   content: {
@@ -17,8 +17,38 @@ const customStyles = {
   },
 };
 
+// Paste your NFT.Storage API key into the quotes:
+const NFT_STORAGE_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweGU1OThEMjgzOTVGMDA4MDhiYkNkRDM5ODEyQWVFNkIyZTAwNjIxMTEiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY3MDA4OTI0ODY2MSwibmFtZSI6IlRva2VuX2Zvcl9UUEdfSEhfcHJvamVjdCJ9.f_aVkeW0DZIaLUqzFZlj65HknStjANZimD5rJq68Myc';
+
+
 Modal.setAppElement('#modal-element');
 
+async function storeInIPFSUsingNFTStorage ({ name, description, image }) {
+  console.log('inside storeInIPFS');
+  console.log(name, description, image);
+  const client = new NFTStorage({ token: NFT_STORAGE_TOKEN });
+
+  // fetch(image).then(response => {
+  //   response.blob();
+  // }).then( (blob) => {
+    // const imgType = image.files[0].type;
+    // const imageFile = new File([blob], image, { type: imgType });
+    // const metadata = await client.store({
+    //   name,
+    //   description,
+    //   image: imageFile
+    // });
+  //   console.log(blob);
+  // });
+
+  // val = await uploadtoNFTstorage(NFT_Mint_JSON);
+
+  const metadata = await client.store({
+    name,
+    description,
+    image
+  });
+}
 
 export default function OrgDashboardBody () {
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -26,21 +56,52 @@ export default function OrgDashboardBody () {
   const options = [
     {
       title: 'Super contributor',
-      description: 'Hey, thanks for contributing and being part of our journey. We acknowledge your contribution with this contributor badge.',
-      badgeURL: './beginner.png'
+      description: 'Hey, thanks for contributing and being part of our journey. We acknowledge your contribution with this contributor badge.'
     },
     {
       title: 'Pro in stack',
-      description: 'Hey, mate, we are very glad to have professional like you as part of our team. We acknowledge your contribution with this pro badge.',
-      badgeURL: './intermediate.png'
+      description: 'Hey, mate, we are very glad to have professional like you as part of our team. We acknowledge your contribution with this pro badge.'
     },
     {
       title: 'Champion of all',
-      description: 'Hey champ, thanks for single handedly managing it, we are mesmerized with your talent and super happy to be working with you. We acknowledge your contribution with this champion badge.',
-      badgeURL: './professional.png'
+      description: 'Hey champ, thanks for single handedly managing it, we are mesmerized with your talent and super happy to be working with you. We acknowledge your contribution with this champion badge.'
     }
   ];
   const [selectedOptionIndex, setSelectedOptionIndex] = React.useState(0);
+  const [lancerId, setLancerId] = React.useState('0x2C1b291B3946e06ED41FB543B18a21558eBa3d62');
+  const [imgObj, setImgObj] = React.useState();
+
+  const handleSubmit = async () => {
+    const badgeName = options[selectedOptionIndex].title || '';
+    const badgeDescription = options[selectedOptionIndex].description || '';
+    const date = startDate;
+    const issuedBy = 'BitDAO';
+    const image = document.getElementById('badgeImage').value;
+    
+    const finalDesc = badgeDescription + 'for: ' + lancerId + 'Issued By: ' + issuedBy + 'on: ' + date;
+    
+    // fetch('./IMG_1757_1.png').then(response => response.blob()).then( (blob) => {
+    //   storeInIPFSUsingNFTStorage({
+    //     name: badgeName,
+    //     description: finalDesc,
+    //     image: blob
+    //   });
+    // });
+    const client = new NFTStorage({ token: NFT_STORAGE_TOKEN });
+    console.log(imgObj);
+    try{
+      const metadata = await client.store({
+        name: 'test',
+        description: 'test desc',
+        image: imgObj
+      });
+      console.log(metadata);
+    } catch (err) {
+      console.log(err);
+    }
+
+
+  };
   const handleChange = (e) => {
     console.log(e.target.value);
     setSelectedOptionIndex(e.target.value);
@@ -53,6 +114,8 @@ export default function OrgDashboardBody () {
   function closeModal() {
     setIsOpen(false);
   }
+
+
   return (
     <>
       <div className='main-body'>
@@ -156,19 +219,19 @@ export default function OrgDashboardBody () {
                 <div className='member-profile'>
                   <img alt='member profile' height='128' width='128' src='./IMG_1756_1.png' />
                 </div>
-                <div className='member-name'>Robby</div>
+                <div className='member-name'>Game 7</div>
               </div>
               <div className='member-profile-wrapper'>
                 <div className='member-profile'>
                   <img height='128' width='128' alt='member profile' src='./IMG_1755_1.png' />
                 </div>
-                <div className='member-name'>Haus</div>
+                <div className='member-name'>SozuHaus</div>
               </div>
               <div className='member-profile-wrapper'>
                 <div className='member-profile'>
                   <img height='128' width='128' alt='member profile' src='./IMG_1818_1.png' />
                 </div>
-                <div className='member-name'>Jane</div>
+                <div className='member-name'>Jane WoW</div>
               </div>
             </div>
           </div>
@@ -213,256 +276,44 @@ export default function OrgDashboardBody () {
           <button className='modal-close-btn' onClick={closeModal}>X</button>
         </div>
         <div className='modal-body'>
-          <h5 style={{ fontFamily: 'Roboto' }} className='modal-header-font'> Badge Name</h5>
+          <h6 style={{ fontFamily: 'Roboto' }} className='modal-header-font'> Badge Name</h6>
           <div className='add-badge-container'>
             <select style={{ fontFamily: 'Roboto' }} onChange={handleChange} className='badge-dropdown'>
               <option value={0}>{options[0].title}</option>
               <option value={1}>{options[1].title}</option>
               <option value={2}>{options[2].title}</option>
             </select>
-            <div className='badge-image-wrapper'>
-              <img alt='badge' src={options[selectedOptionIndex].badgeURL} />
-              <div style={{ position: 'relative'}}>
-                <div className='edit-icon-wrapper'><EditIcon /></div>
-              </div>
-              
-            </div>
           </div>
           <br />
           <br />
-          <h5 style={{ fontFamily: 'Roboto' }} className='modal-header-font'>Feedback</h5>
-          <textarea style={{ fontFamily: 'Roboto' }} className='badge-description' value={options[selectedOptionIndex].description} />
+          <div className='badge-image-wrapper'>
+            <h6 style={{ fontFamily: 'Roboto' }} className='modal-header-font'> Upload badge image</h6>
+            <input onChange={(e) => setImgObj(e.target.files[0])} type="file" id="badgeImage" name="badgeImage" accept="image/png, image/jpeg" />
+          </div>
+
           <br />
           <br />
-          <h5 style={{ fontFamily: 'Roboto' }} className='modal-header-font'>Date</h5>
+          <h6 style={{ fontFamily: 'Roboto' }} className='modal-header-font'>Feedback</h6>
+          <textarea rows='3' style={{ fontFamily: 'Roboto' }} className='badge-description' value={options[selectedOptionIndex].description} />
+          <br />
+          <br />
+          <h6 style={{ fontFamily: 'Roboto' }} className='modal-header-font'>Date</h6>
           <DatePicker style={{ fontFamily: 'Roboto' }} selected={startDate} onChange={(date) => setStartDate(date)} />
           <br />
           <br />
-          <h5 style={{ fontFamily: 'Roboto' }} className='modal-header-font'>Lancer ID</h5>
-          <input style={{ fontFamily: 'Roboto' }}  size='32' className='lancer-Id' type='text' value='0x2C1b291B3946e06ED41FB543B18a21558eBa3d62' disabled />
+          <h6 style={{ fontFamily: 'Roboto' }} className='modal-header-font'>Lancer ID</h6>
+          <input style={{ fontFamily: 'Roboto' }}  size='32' className='lancer-Id' type='text' value={lancerId} disabled />
           <br />
           <br />
-          <h5 style={{ fontFamily: 'Roboto' }} className='modal-header-font'>Issued by</h5>
+          <h6 style={{ fontFamily: 'Roboto' }} className='modal-header-font'>Issued by</h6>
           <div><img height='48' width='48' alt='bitDAO' src='./IMG_1757_1.png' /></div>
           <br />
           <br />
         </div>
         <div className='modal-footer'>
-          <button className='modal-footer-submit-btn'>Share</button>
+          <button className='modal-footer-submit-btn' onClick={handleSubmit}>Share</button>
         </div>
       </Modal>
     </>
   );
 };
-
-{/* <div className="org-dashboard-div">
-<img className="ellipse-icon" alt="" />
-<img className="ellipse-icon1" alt="" />
-<img className="img-1752-1-icon" alt="" src="../img-1752-1@2x.png" />
-<div className="credquest-div">CredQuest</div>
-<img className="group-icon" alt="" src="../group-185.svg" />
-<div className="group-div">
-  <div className="group-div1">
-    <div className="group-div1">
-      <div className="rectangle-div" />
-      <img
-        className="rectangle-icon"
-        alt=""
-        src="../rectangle-5519.svg"
-      />
-      <div className="group-div3">
-        <img className="ellipse-icon2" alt="" src="../ellipse-52.svg" />
-        <div className="group-div4">
-          <img className="group-icon1" alt="" src="../group-186.svg" />
-          <div className="role-div">ROLE</div>
-        </div>
-      </div>
-      <div className="group-div5">
-        <img className="ellipse-icon3" alt="" src="../ellipse-521.svg" />
-        <div className="group-div6">
-          <img className="group-icon2" alt="" src="../group-1861.svg" />
-          <div className="role-div">ROLE</div>
-        </div>
-      </div>
-      <div className="group-div7">
-        <img className="ellipse-icon4" alt="" src="../ellipse-522.svg" />
-        <div className="group-div8">
-          <img className="group-icon3" alt="" src="../group-1862.svg" />
-          <div className="role-div">ROLE</div>
-        </div>
-      </div>
-      <img className="group-icon4" alt="" src="../group-5.svg" />
-      <div className="x-close-div">X CLOSE</div>
-    </div>
-    <div className="roles-div">Roles</div>
-    <div className="add-div">+ADD |</div>
-  </div>
-</div>
-<div className="group-div9">
-  <div className="group-div10">
-    <div className="rectangle-div1" />
-    <img
-      className="rectangle-icon1"
-      alt=""
-      src="../rectangle-55191.svg"
-    />
-    <div className="x-close-div1">X CLOSE</div>
-    <div className="group-div11">
-      <img className="ellipse-icon5" alt="" src="../ellipse-523.svg" />
-      <div className="group-div12">
-        <img className="group-icon5" alt="" src="../group-1863.svg" />
-        <div className="complete-div">COMPLETE</div>
-      </div>
-    </div>
-    <div className="group-div13">
-      <img className="ellipse-icon5" alt="" src="../ellipse-524.svg" />
-      <div className="group-div12">
-        <img className="group-icon6" alt="" src="../group-1864.svg" />
-        <div className="complete-div">COMPLETE</div>
-      </div>
-    </div>
-    <div className="group-div15">
-      <img className="ellipse-icon5" alt="" src="../ellipse-525.svg" />
-      <div className="group-div12">
-        <img className="group-icon6" alt="" src="../group-1865.svg" />
-        <div className="open-div">OPEN</div>
-      </div>
-    </div>
-    <img className="group-icon8" alt="" src="../group-51.svg" />
-    <div className="add-div1">+ADD |</div>
-  </div>
-  <div className="quests-div">Quests</div>
-</div>
-<div className="group-div17">
-  <div className="group-div18">
-    <div className="rectangle-div2" />
-    <img
-      className="rectangle-icon2"
-      alt=""
-      src="../rectangle-55192.svg"
-    />
-    <button className="rectangle-button" />
-    <img className="rectangle-icon3" alt="" src="../rectangle-5520.svg" />
-  </div>
-  <div className="bitdao-div">BitDAO</div>
-  <div className="bio-div">BIO</div>
-  <img className="ellipse-icon8" alt="" src="../ellipse-51.svg" />
-  <div className="edit-div">EDIT</div>
-  <div className="connect-discord-div">Connect Discord</div>
-  <div className="add-to-favorites">Add to favorites</div>
-  <textarea
-    className="textblock-textarea"
-    placeholder="INDUSTRY"
-    defaultValue="Creating In-game graphics, audio engineering, VR "
-  />
-  <img className="rectangle-icon4" alt="" src="../rectangle-5526.svg" />
-  <div className="k-div">50.5k</div>
-  <div className="k-div1">43,5k</div>
-  <div className="div">8657</div>
-  <div className="k-div2">19k</div>
-  <div className="twitter-followers-div">
-    <p className="twitter-p">{`Twitter `}</p>
-    <p className="followers-p">Followers</p>
-  </div>
-  <div className="discord-members-div">
-    <p className="twitter-p">Discord</p>
-    <p className="followers-p">Members</p>
-  </div>
-  <div className="holders-div">Holders</div>
-  <div className="txs-div">Txs</div>
-</div>
-<div className="text-div">
-  <p className="followers-p">&nbsp;</p>
-</div>
-<div className="group-div19">
-  <div className="group-div20">
-    <div className="group-div21">
-      <div className="group-div21">
-        <div className="rectangle-div3" />
-        <img
-          className="rectangle-icon5"
-          alt=""
-          src="../rectangle-55193.svg"
-        />
-        <div className="group-div23">
-          <img
-            className="ellipse-icon9"
-            alt=""
-            src="../ellipse-526.svg"
-          />
-          <div className="group-div24">
-            <img className="group-icon9" alt="" src="../group-1866.svg" />
-            <div className="open-div">GAME 7</div>
-          </div>
-        </div>
-        <div className="group-div25">
-          <img
-            className="ellipse-icon5"
-            alt=""
-            src="../ellipse-527.svg"
-          />
-          <div className="group-div26">
-            <img
-              className="group-icon10"
-              alt=""
-              src="../group-1867.svg"
-            />
-            <div className="open-div">JANE WOW</div>
-          </div>
-        </div>
-        <img className="group-icon11" alt="" src="../group-52.svg" />
-        <div className="group-div27">
-          <div className="group-div28">
-            <div className="group-div28">
-              <div className="group-div28">
-                <img
-                  className="ellipse-icon11"
-                  alt=""
-                  src="../ellipse-528.svg"
-                />
-                <div className="group-div31">
-                  <img
-                    className="group-icon12"
-                    alt=""
-                    src="../group-1868.svg"
-                  />
-                  <div className="sozuhaus-div">SOZUHAUS</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className="members-div">Members</div>
-  </div>
-  <div className="x-close-div2">X CLOSE</div>
-  <div className="add-div2">
-    +ADD |
-  </div>
-</div>
-<img className="img-1755-1-icon" alt="" src="../img-1755-1@1x.png" />
-<img className="asset-1-2" alt="" src="../asset-1-2.svg" />
-<img className="img-1756-1-icon" alt="" src="../img-1756-1@2x.png" />
-<img className="img-1757-1-icon" alt="" src="../img-1757-1@1x.png" />
-<img className="image-icon" alt="" src="../image.svg" />
-<img className="image-icon1" alt="" src="../image1.svg" />
-<img className="image-icon2" alt="" src="../image2.svg" />
-<img className="image-icon3" alt="" src="../image3.svg" />
-<img className="image-icon4" alt="" src="../image4.svg" />
-<img className="image-icon5" alt="" src="../image5.svg" />
-<img className="vector-icon" alt="" src="../vector-336.svg" />
-<img className="img-1818-1-icon" alt="" src="../img-1818-1@1x.png" />
-<img
-  className="swords-1-icon"
-  alt=""
-  src="../swords-1@1x.png"
-/>
-<img className="swords-2-icon" alt="" src="../swords-2@1x.png" />
-<img className="swords-3-icon" alt="" src="../swords-3@1x.png" />
-<img className="group-icon13" alt="" src="../group-280@1x.png" />
-<img className="swords-3-2-icon" alt="" src="../swords3-2@1x.png" />
-<RectangleComponent />
-<button className="badge-you-members">Badge your members</button>
-<div className="create-quest-div">Create Quest</div>
-</div> */}
