@@ -70,8 +70,10 @@ export default function OrgDashboardBody () {
   const [selectedOptionIndex, setSelectedOptionIndex] = React.useState(0);
   const [lancerId, setLancerId] = React.useState('0x2C1b291B3946e06ED41FB543B18a21558eBa3d62');
   const [imgObj, setImgObj] = React.useState();
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   const handleSubmit = async () => {
+    setIsSubmitting(true);
     const badgeName = options[selectedOptionIndex].title || '';
     const badgeDescription = options[selectedOptionIndex].description || '';
     const date = startDate;
@@ -87,6 +89,8 @@ export default function OrgDashboardBody () {
       });
     } catch (err) {
       console.log(err);
+    } finally {
+      setIsSubmitting(false);
     }
   };
   const handleChange = (e) => {
@@ -298,7 +302,7 @@ export default function OrgDashboardBody () {
           <br />
         </div>
         <div className='modal-footer'>
-          <button className='modal-footer-submit-btn' onClick={handleSubmit}>Share</button>
+          <button isDisabled={isSubmitting} className='modal-footer-submit-btn' onClick={handleSubmit}>{isSubmitting ? 'Sharing ...' : 'Share'}</button>
         </div>
       </Modal>
     </>
