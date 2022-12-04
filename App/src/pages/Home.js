@@ -7,11 +7,12 @@ import ImgSliderBox from "../components/Home/ImgSliderBox";
 import ImgCard from "../components/Common/ImgCard";
 import LancerInfoCard from "../components/Common/LancerInfoCard";
 
-const Home = () => {
+const Home = (props) => {
+  const { address, setAddress } = props;
   return (
     <>
       <div className="home-layout min-h-screen overflow-unset">
-        <Header />
+        <Header address={address} setAddress={setAddress} />
         <div className="main-part flex">
           <div className="first-section">
             <Container>

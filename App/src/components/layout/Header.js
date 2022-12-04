@@ -32,7 +32,8 @@ const customStyles = {
 Modal.setAppElement('#modal-element');
 
 
-const Header = () => {
+const Header = (props) => {
+  const { address, setAddress } = props;
   const [joinButtonPopup, setJoinButtonPopup] = useState(false);
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [modalState, setModalState] = React.useState(0);
@@ -427,7 +428,7 @@ const Header = () => {
           <button className='modal-close-btn' onClick={closeModal}>X</button>
         </div>
         <div className='modal-body'>
-          {modalState === 0 ? <JoinContainer setModalState={setModalState} /> : <Role />}
+          {modalState === 0 ? <JoinContainer address={address} setAddress={setAddress} setModalState={setModalState} /> : <Role />}
           
         </div>
       </Modal>

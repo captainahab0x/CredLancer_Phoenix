@@ -11,7 +11,8 @@ import LoginContainer from "../login/LoginContainer";
 
 import { useState } from "react";
 
-const OrgDashboardHeader = () => {
+const OrgDashboardHeader = (props) => {
+  const { address } = props;
   const [joinButtonPopup, setJoinButtonPopup] = useState(false);
   const [joinButtonPopup2, setJoinButtonPopup2] = useState(false);
   const [joinButtonPopup3, setJoinButtonPopup3] = useState(false);
@@ -338,7 +339,7 @@ const OrgDashboardHeader = () => {
               <img src="./assets/images/logo.png" alt="logo" />
             </div>
             <div className="loggedInViewContainer">
-              <LoggedInView />
+              <LoggedInView address={address} />
             </div>
           </div>
         </div>
