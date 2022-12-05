@@ -70,37 +70,28 @@ export default function OrgDashboardBody () {
   const [selectedOptionIndex, setSelectedOptionIndex] = React.useState(0);
   const [lancerId, setLancerId] = React.useState('0x2C1b291B3946e06ED41FB543B18a21558eBa3d62');
   const [imgObj, setImgObj] = React.useState();
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   const handleSubmit = async () => {
+    setIsSubmitting(true);
     const badgeName = options[selectedOptionIndex].title || '';
     const badgeDescription = options[selectedOptionIndex].description || '';
     const date = startDate;
     const issuedBy = 'BitDAO';
-    const image = document.getElementById('badgeImage').value;
     
     const finalDesc = badgeDescription + 'for: ' + lancerId + 'Issued By: ' + issuedBy + 'on: ' + date;
     
-    // fetch('./IMG_1757_1.png').then(response => response.blob()).then( (blob) => {
-    //   storeInIPFSUsingNFTStorage({
-    //     name: badgeName,
-    //     description: finalDesc,
-    //     image: blob
-    //   });
-    // });
-    const client = new NFTStorage({ token: NFT_STORAGE_TOKEN });
-    console.log(imgObj);
     try{
-      const metadata = await client.store({
-        name: 'test',
-        description: 'test desc',
+      storeInIPFSUsingNFTStorage({
+        name: badgeName,
+        description: finalDesc,
         image: imgObj
       });
-      console.log(metadata);
     } catch (err) {
       console.log(err);
+    } finally {
+      setIsSubmitting(false);
     }
-
-
   };
   const handleChange = (e) => {
     console.log(e.target.value);
@@ -311,7 +302,7 @@ export default function OrgDashboardBody () {
           <br />
         </div>
         <div className='modal-footer'>
-          <button className='modal-footer-submit-btn' onClick={handleSubmit}>Share</button>
+          <button isDisabled={isSubmitting} className='modal-footer-submit-btn' onClick={handleSubmit}>{isSubmitting ? 'Sharing ...' : 'Share'}</button>
         </div>
       </Modal>
     </>

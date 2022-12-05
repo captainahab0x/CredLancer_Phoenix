@@ -4,13 +4,8 @@ import { Button } from "react-bootstrap";
 
 import { useState } from "react";
 
-import Login from "./LoginContainer";
-import LoginOptions from "./LoginOptions";
-
-import { useAccount } from "@starknet-react/core";
 
 function Join(props) {
-  const { account, address, status } = useAccount();
   const { setIsOpen } = props;
 
 
