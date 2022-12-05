@@ -1,0 +1,21 @@
+CredLancer
+const CredLancer = await ethers.getContractFactory('CredLancer');
+const Box = await ethers.getContractFactory('Box');
+await ethers.provider.listAccounts()
+.exit
+await ethers.provider.listAccounts()
+.history
+.exit
+await ethers.provider.listAccounts()
+.exit
+ethers
+await ethers.provider.listAccounts()
+const {ethers} = require("ethers")
+await ethers.provider.listAccounts()
+require("ethers")
+await ethers.provider.listAccounts()
+.exit
+(await ethers.provider.getBalance(accounts[0])).toString()
+accounts = await ethers.provider.listAccounts()
+(await ethers.provider.getBalance(accounts[0])).toString()
+await ethers.provider.listAccounts()
